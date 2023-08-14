@@ -2,7 +2,7 @@
 
 
 # ArgumentNullException
-============================================================================================
+
 ### Guard Clause
 
 The 𝗔𝗿𝗴𝘂𝗺𝗲𝗻𝘁𝗡𝘂𝗹𝗹𝗘𝘅𝗰𝗲𝗽𝘁𝗶𝗼𝗻.𝗧𝗵𝗿𝗼𝘄𝗜𝗳𝗡𝘂𝗹𝗹 method is a static method in the System namespace that throws an 𝗔𝗿𝗴𝘂𝗺𝗲𝗻𝘁𝗡𝘂𝗹𝗹𝗘𝘅𝗰𝗲𝗽𝘁𝗶𝗼𝗻 if the specified object is null. It is a convenient way to check for null parameters in your code. It can help to prevent runtime errors and make the code more concise.
@@ -21,7 +21,7 @@ The 𝗔𝗿𝗴𝘂𝗺𝗲𝗻𝘁𝗡𝘂𝗹𝗹𝗘𝘅𝗰𝗲𝗽𝘁𝗶
 
 𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝗿𝗲𝗮𝗱𝗶𝗻𝗴 😊
 
-```
+```csharp
 public void Update(Student Student)
 {
     if(Student is null)
@@ -34,7 +34,7 @@ public void Update(Student Student)
 
 Suggested Approach:
 
-```
+```csharp
 public void Update(Student student)
 {
     ArgumentNullException.ThrowIfNull(student);
@@ -43,7 +43,7 @@ public void Update(Student student)
 
 ```
 
-============================================================================================
+
 
 
 # 𝗥𝗲𝗱𝘂𝗻𝗱𝗮𝗻𝘁 𝗰𝗮𝘀𝘁𝘀 𝘀𝗵𝗼𝘂𝗹𝗱 𝗻𝗼𝘁 𝗯𝗲 𝘂𝘀𝗲𝗱
@@ -62,7 +62,7 @@ public void Update(Student student)
 
 Redundant casts should not be used:
 
-```
+```csharp
 class Person {}
 class Employee: Person {}
 class Program 
@@ -77,7 +77,7 @@ class Program
 ```
 should be
 
-```
+```csharp
 class Person {}
 class Employee: Person {}
 class Program 
