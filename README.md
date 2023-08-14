@@ -1,7 +1,7 @@
 
 
 
-# ArgumentNullException
+# 1. ArgumentNullException
 
 ### Guard Clause
 
@@ -46,7 +46,7 @@ public void Update(Student student)
 
 
 
-# 𝗥𝗲𝗱𝘂𝗻𝗱𝗮𝗻𝘁 𝗰𝗮𝘀𝘁𝘀 𝘀𝗵𝗼𝘂𝗹𝗱 𝗻𝗼𝘁 𝗯𝗲 𝘂𝘀𝗲𝗱
+# 2. 𝗥𝗲𝗱𝘂𝗻𝗱𝗮𝗻𝘁 𝗰𝗮𝘀𝘁𝘀 𝘀𝗵𝗼𝘂𝗹𝗱 𝗻𝗼𝘁 𝗯𝗲 𝘂𝘀𝗲𝗱
 
 💡 Explicit casting is not necessary in the following situations:
 
