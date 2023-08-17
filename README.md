@@ -43,7 +43,7 @@ public void Update(Student student)
 
 ```
 
-
+---
 
 
 # 2. 𝗥𝗲𝗱𝘂𝗻𝗱𝗮𝗻𝘁 𝗰𝗮𝘀𝘁𝘀 𝘀𝗵𝗼𝘂𝗹𝗱 𝗻𝗼𝘁 𝗯𝗲 𝘂𝘀𝗲𝗱
@@ -90,3 +90,45 @@ class Program
 }
 
 ```
+---
+
+# Use Task.WhenAll();
+## How to execute tasks in parallel?
+## How to be sure all the tasks are finished?
+
+
+Task.WhenAll is a static method that is used when you want to do some operation with multiple tasks in parallel and want to wait until all of them have been completed.
+
+It returns a single task that finishes only when all of the tasks you've passed to it have been completed.
+
+It's useful when you have multiple independent tasks that can run in parallel, and you need to do something after they're all done.
+
+If any of the tasks you pass to Task.WhenAll throws an exception, Task.WhenAll will also throw an exception.
+
+This exception will be an AggregateException, which is a type of exception that can hold multiple inner exceptions. Each of the inner exceptions corresponds to one of the exceptions thrown by the tasks.
+
+```csharp
+public async Task CallAPIs()
+{
+ await CallApiOne();
+ await CallApiTwo();
+ await CallApiThree();
+}
+```
+better way
+
+```csharp
+public async Task CallAPIs()
+{
+  await Task.WhenAll
+  (
+     CallApiOne(),
+     CallApiTwo(),
+     CallApiThree()
+  );
+}
+```
+
+
+
+
