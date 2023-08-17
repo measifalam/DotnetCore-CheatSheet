@@ -97,7 +97,7 @@ class Program
 ## How to be sure all the tasks are finished?
 
 
-Task.WhenAll is a static method that is used when you want to do some operation with multiple tasks in parallel and want to wait until all of them have been completed.
+Task.WhenAll is a static method used when you want to do some operation with multiple tasks in parallel and wait until all of them have been completed.
 
 It returns a single task that finishes only when all of the tasks you've passed to it have been completed.
 
@@ -105,7 +105,7 @@ It's useful when you have multiple independent tasks that can run in parallel, a
 
 If any of the tasks you pass to Task.WhenAll throws an exception, Task.WhenAll will also throw an exception.
 
-This exception will be an AggregateException, which is a type of exception that can hold multiple inner exceptions. Each of the inner exceptions corresponds to one of the exceptions thrown by the tasks.
+This exception will be an AggregateException, which is a type of exception that can hold multiple inner exceptions. Each inner exception corresponds to one of the exceptions thrown by the tasks.
 
 ```csharp
 public async Task CallAPIs()
@@ -127,6 +127,57 @@ public async Task CallAPIs()
      CallApiThree()
   );
 }
+```
+---
+
+# 𝗨𝘀𝗲 𝘀𝘁𝗿𝗶𝗻𝗴.𝗘𝗾𝘂𝗮𝗹𝘀 𝗶𝗻𝘀𝘁𝗲𝗮𝗱 𝗼𝗳 𝗧𝗼𝗨𝗽𝗽𝗲𝗿()/𝗧𝗼𝗟𝗼𝘄𝗲𝗿() 𝘄𝗵𝗲𝗻 𝗰𝗼𝗺𝗽𝗮𝗿𝗶𝗻𝗴 𝘀𝘁𝗿𝗶𝗻𝗴𝘀
+
+🐌 Using 𝗧𝗼𝗨𝗽𝗽𝗲𝗿() and 𝗧𝗼𝗟𝗼𝘄𝗲𝗿() for case conversion in C# can impact performance due to memory allocation, string copying, and potential garbage collection, especially in situations involving large strings or frequent conversions.
+
+🚀 𝗦𝘁𝗿𝗶𝗻𝗴.𝗘𝗾𝘂𝗮𝗹𝘀 is faster than ToUpper() or ToLower() due to direct character comparison, avoiding memory allocation, and reducing overhead for case-insensitive string comparison.
+
+🔥 To perform string comparison, it's better to use built-in comparison methods like 𝗦𝘁𝗿𝗶𝗻𝗴.𝗘𝗾𝘂𝗮𝗹𝘀 with appropriate StringComparison options, which handle case-insensitivity and cultural considerations correctly while maintaining better performance and accuracy.
+
+```csharp
+
+public bool AreStringsEqual(string firstString, string secondString)
+{
+  return (firstString.ToUpper() == secondString.ToUpper())
+}
+```
+optimized ways
+
+```csharp
+public bool AreStringsEqual(string firstString, string secondString)
+{
+  return string.Equals(firstString, secondString, StringComparison.OrdinalIgnoreCase);
+}
+
+```
+
+---
+# How I split the collection into smaller collections with the LINQ method 💡
+Dealing with large collections in your application is often done with LINQ:
+
+→ Skip
+→ Take
+
+The first one takes the number of elements that it needs to skip, and the second element to take from it.
+
+And there is nothing wrong with this approach, there is a simpler way.
+
+Introduces in .NET 6, Chunk will split the collection into groups of smaller ones with several elements provided.
+
+If the number of remaining elements in the main collection is lower than provided, a new collection will be created with the rest from the main.
+
+You can occur to two types of exceptions:
+
+→ 𝗔𝗿𝗴𝘂𝗺𝗲𝗻𝘁𝗡𝘂𝗹𝗹𝗘𝘅𝗰𝗲𝗽𝘁𝗶𝗼𝗻 if the collection is null
+→ 𝗔𝗿𝗴𝘂𝗺𝗲𝗻𝘁𝗢𝘂𝘁𝗢𝗳𝗥𝗮𝗻𝗴𝗲𝗘𝘅𝗰𝗲𝗽𝘁𝗶𝗼𝗻 if the provided number of elements is below 1
+
+```charp
+var chunckedUsers1 = users.skip(2).Take(2);
+var chunckedUsers2 = users.Chunk(5);
 ```
 
 
